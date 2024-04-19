@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Search for Weather</h3>
+      <form [formGroup]="weatherSearchForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            id="weatherLocation"
+            aria-describedby="weatherLocation"
+            placeholder="Enter city name"
+            formControlName="location"
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-info" style="margin-top: 10px;">Get Weather</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Weather Details</h3>
+      <div class="text-center">
+        <p class="mb-4">
+          Current weather conditions: {{ weatherData?.weather[0].description }}.
+        </p>
+        <p class="mb-2">
+          Temperature: {{ weatherData?.main.temp }}°C
+        </p>
+        <p class="mb-2">
+          Temperature-minimum: {{ weatherData?.main.temp_min }}°C
+        </p>
+        <p class="mb-2">
+          Temperature-maximum: {{ weatherData?.main.temp_max }}°C
+        </p>
+        <p class="mb-2">
+          Feels like: {{ weatherData?.main.feels_like }}°C
+        </p><p class="mb-2">
+          Humidity: {{ weatherData?.main.humidity }}%
+        </p><p class="mb-2">
+          Pressurre: {{ weatherData?.main.pressure }}mb
+        </p>
+        <p class="mb-2">
+          Sunrise: {{ weatherData?.sys.sunrise * 1000 | date:'HH:mm' }}
+        </p>
+        <p class="mb-2">
+          Sunset: {{ weatherData?.sys.sunset * 1000 | date:'HH:mm' }}
+        </p>
+        <p class="mb-2">
+          Location: {{ weatherData?.name }}, {{ weatherData?.sys.country }}.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
